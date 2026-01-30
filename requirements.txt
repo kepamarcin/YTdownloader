@@ -1,0 +1,11 @@
+# Główne zależności aplikacji Media Downloader
+
+# GUI Framework
+customtkinter>=5.2.0
+
+# Pobieranie multimediów
+yt-dlp>=2024.1.0
+
+# Podstawowe biblioteki (zwykle już zainstalowane)
+Pillow>=10.0.0
+packaging>=23.0
