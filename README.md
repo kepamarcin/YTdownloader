@@ -60,7 +60,7 @@ cd YTdownloader
 
 #### 1. Utwórz środowisko wirtualne
 
-**Windows:**
+**Windows:** W terminalu. NIe bać się, nie gryzie.
 ```powershell
 python -m venv venv
 # Jeśli wystąpi błąd uprawnień, wykonaj: Set-ExecutionPolicy Bypass -Scope Process
