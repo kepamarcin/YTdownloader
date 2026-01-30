@@ -80,12 +80,6 @@ Upewnij się, że środowisko wirtualne jest aktywne (powinieneś widzieć `(ven
 pip install -r requirements.txt
 ```
 
-Zaleca się również aktualizację `yt-dlp` do najnowszej wersji:
-```bash
-pip install --upgrade yt-dlp
-```
-
-
 
 #### ▶️ Uruchomienie
 
