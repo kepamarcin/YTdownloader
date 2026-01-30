@@ -85,16 +85,7 @@ Zaleca się również aktualizację `yt-dlp` do najnowszej wersji:
 pip install --upgrade yt-dlp
 ```
 
-#### 3. Konfiguracja FFmpeg # Już są w projekcie, nie trzeba tego robić!
 
-Aplikacja wymaga `ffmpeg` do łączenia strumieni wideo i audio.
-
-1. Pobierz FFmpeg ze strony [ffmpeg.org](https://ffmpeg.org/).
-2. Umieść plik wykonywalny w katalogu `ffmpeg/` wewnątrz projektu.
-   - **Windows:** Plik `ffmpeg.exe` umieść w `ffmpeg/ffmpeg.exe`.
-   - **Linux/macOS:** Plik binarny `ffmpeg` umieść w `ffmpeg/ffmpeg` (pamiętaj o nadaniu uprawnień: `chmod +x ffmpeg/ffmpeg`).
-
----
 
 #### ▶️ Uruchomienie
 
