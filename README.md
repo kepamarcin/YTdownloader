@@ -85,7 +85,7 @@ Zaleca się również aktualizację `yt-dlp` do najnowszej wersji:
 pip install --upgrade yt-dlp
 ```
 
-#### 3. Konfiguracja FFmpeg
+#### 3. Konfiguracja FFmpeg # Już są w projekcie, nie trzeba tego robić!
 
 Aplikacja wymaga `ffmpeg` do łączenia strumieni wideo i audio.
 
