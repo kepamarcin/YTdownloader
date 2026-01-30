@@ -64,7 +64,7 @@ cd YTdownloader
 ```powershell
 python -m venv venv
 # Jeśli wystąpi błąd uprawnień, wykonaj: Set-ExecutionPolicy Bypass -Scope Process
-venv\Scripts activate
+venv\Scripts\activate
 ```
 
 **Linux/macOS:**
