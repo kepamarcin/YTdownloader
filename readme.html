@@ -18,13 +18,13 @@
         }
         
         .dark {
-            --bg: #111827;
-            --bg-card: #1f2937;
-            --text: #e5e7eb;
-            --text-muted: #9ca3af;
-            --border: #374151;
-            --code-bg: #374151;
-            --pre-bg: #030712;
+            --bg: #0f172a;
+            --bg-card: #1e293b;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --code-bg: #334155;
+            --pre-bg: #020617;
         }
         
         body {
@@ -37,7 +37,6 @@
         
         .container { max-width: 900px; margin: 0 auto; padding: 3rem 1rem; }
         
-        /* Theme Toggle */
         .theme-toggle {
             position: fixed;
             top: 1rem;
@@ -56,35 +55,36 @@
         }
         .theme-toggle svg { width: 24px; height: 24px; }
         .sun { display: none; color: #facc15; }
-        .moon { display: block; color: #4b5563; }
+        .moon { display: block; color: #94a3b8; }
         .dark .sun { display: block; }
         .dark .moon { display: none; }
         
-        /* Header */
         header { text-align: center; margin-bottom: 3rem; }
         .logo {
             width: 80px; height: 80px;
-            background: #ef4444;
-            border-radius: 1rem;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            border-radius: 1.25rem;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 1.5rem;
-            box-shadow: 0 10px 15px -3px rgba(239,68,68,0.3);
+            box-shadow: 0 10px 25px -5px rgba(239,68,68,0.4);
         }
         .logo svg { width: 40px; height: 40px; fill: white; }
         h1 {
-            font-size: 2.25rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            background: linear-gradient(to right, #ef4444, #ec4899);
+            background: linear-gradient(135deg, #ef4444, #f97316);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
-        .subtitle { font-size: 1.25rem; color: var(--text-muted); }
+        .subtitle { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1rem; }
+        .author { font-size: 0.9rem; color: var(--text-muted); }
+        .author a { color: #ef4444; text-decoration: none; }
+        .author a:hover { text-decoration: underline; }
         
-        /* Cards */
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -95,144 +95,95 @@
         }
         
         h2 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.6rem;
         }
-        h2 .icon {
-            width: 32px; height: 32px;
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        h2 .icon svg { width: 20px; height: 20px; }
+        h2 .emoji { font-size: 1.3rem; }
         
-        h3 { font-size: 1.1rem; font-weight: 600; margin: 1rem 0 0.75rem; color: var(--text-muted); }
+        h3 { font-size: 1.05rem; font-weight: 600; margin: 1.25rem 0 0.75rem; color: var(--text); }
         
-        /* Code */
+        p { margin-bottom: 0.75rem; }
+        
         code {
-            font-family: Consolas, Monaco, 'Courier New', monospace;
+            font-family: 'SF Mono', Consolas, Monaco, monospace;
             background: var(--code-bg);
-            padding: 0.2rem 0.5rem;
+            padding: 0.15rem 0.4rem;
             border-radius: 0.25rem;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
         }
         pre {
             background: var(--pre-bg);
-            color: #f3f4f6;
+            color: #e2e8f0;
             padding: 1rem;
             border-radius: 0.75rem;
             overflow-x: auto;
-            font-family: Consolas, Monaco, 'Courier New', monospace;
-            font-size: 0.875rem;
+            font-family: 'SF Mono', Consolas, Monaco, monospace;
+            font-size: 0.85rem;
             margin: 0.5rem 0;
         }
         pre code { background: none; padding: 0; }
-        .comment { color: #6b7280; }
+        .comment { color: #64748b; }
         
-        /* Lists */
-        ul, ol { padding-left: 0; list-style: none; }
-        li { margin: 0.5rem 0; display: flex; align-items: flex-start; gap: 0.75rem; }
-        .bullet { width: 8px; height: 8px; background: #8b5cf6; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0; }
+        ul, ol { padding-left: 0; list-style: none; margin: 0.5rem 0; }
+        li { margin: 0.4rem 0; display: flex; align-items: flex-start; gap: 0.6rem; }
+        .bullet { width: 6px; height: 6px; background: #ef4444; border-radius: 50%; margin-top: 0.55rem; flex-shrink: 0; }
         .num {
-            width: 28px; height: 28px;
-            background: #6366f1;
+            width: 24px; height: 24px;
+            background: linear-gradient(135deg, #ef4444, #f97316);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             font-weight: 700;
             flex-shrink: 0;
         }
         
-        /* Badges */
         .badge {
             display: inline-block;
-            padding: 0.25rem 0.75rem;
+            padding: 0.2rem 0.6rem;
             border-radius: 9999px;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             font-weight: 500;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
-        .badge-win { background: #dbeafe; color: #1d4ed8; }
-        .badge-unix { background: #ffedd5; color: #c2410c; }
-        .dark .badge-win { background: #1e3a5f; color: #93c5fd; }
-        .dark .badge-unix { background: #431407; color: #fdba74; }
+        .badge-win { background: #1e3a5f; color: #7dd3fc; }
+        .badge-unix { background: #365314; color: #bef264; }
+        .dark .badge-win { background: #1e3a5f; color: #7dd3fc; }
+        .dark .badge-unix { background: #365314; color: #bef264; }
+        html:not(.dark) .badge-win { background: #dbeafe; color: #1d4ed8; }
+        html:not(.dark) .badge-unix { background: #dcfce7; color: #15803d; }
         
-        /* Grid */
-        .grid { display: grid; gap: 1rem; }
+        .grid { display: grid; gap: 0.75rem; }
         @media (min-width: 640px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
         
-        /* Info boxes */
         .info-box {
             background: var(--code-bg);
-            padding: 1rem;
-            border-radius: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
         }
-        .info-box .label { font-size: 0.875rem; color: var(--text-muted); }
-        .info-box .value { font-weight: 500; }
+        .info-box .label { font-size: 0.8rem; color: var(--text-muted); }
+        .info-box .value { font-weight: 500; font-size: 0.95rem; }
         
-        /* Table */
         table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-        th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
-        th { font-weight: 600; }
-        td:last-child { color: var(--text-muted); }
+        th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border); }
+        th { font-weight: 600; background: var(--code-bg); }
+        th:first-child { border-radius: 0.5rem 0 0 0; }
+        th:last-child { border-radius: 0 0.5rem 0 0; }
         
-        /* Problem cards */
-        .problem {
-            padding: 1rem;
-            border-radius: 0 0.75rem 0.75rem 0;
-            border-left: 4px solid;
-            margin-bottom: 0.75rem;
+        .note {
+            background: rgba(239,68,68,0.1);
+            border-left: 3px solid #ef4444;
+            padding: 0.75rem 1rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+            font-size: 0.9rem;
+            margin: 0.75rem 0;
         }
-        .problem-title { font-weight: 600; margin-bottom: 0.25rem; }
-        .problem-solution { color: var(--text-muted); }
-        .problem-red { border-color: #f87171; background: #fef2f2; }
-        .problem-orange { border-color: #fb923c; background: #fff7ed; }
-        .problem-yellow { border-color: #fbbf24; background: #fefce8; }
-        .problem-blue { border-color: #60a5fa; background: #eff6ff; }
-        .problem-purple { border-color: #a78bfa; background: #f5f3ff; }
-        .dark .problem-red { background: rgba(239,68,68,0.1); }
-        .dark .problem-orange { background: rgba(251,146,60,0.1); }
-        .dark .problem-yellow { background: rgba(251,191,36,0.1); }
-        .dark .problem-blue { background: rgba(96,165,250,0.1); }
-        .dark .problem-purple { background: rgba(167,139,250,0.1); }
-        .problem-red .problem-title { color: #dc2626; }
-        .problem-orange .problem-title { color: #ea580c; }
-        .problem-yellow .problem-title { color: #ca8a04; }
-        .problem-blue .problem-title { color: #2563eb; }
-        .problem-purple .problem-title { color: #7c3aed; }
-        .dark .problem-red .problem-title { color: #f87171; }
-        .dark .problem-orange .problem-title { color: #fb923c; }
-        .dark .problem-yellow .problem-title { color: #fbbf24; }
-        .dark .problem-blue .problem-title { color: #60a5fa; }
-        .dark .problem-purple .problem-title { color: #a78bfa; }
-        
-        /* Icon colors */
-        .icon-blue { background: #dbeafe; color: #2563eb; }
-        .icon-purple { background: #f3e8ff; color: #7c3aed; }
-        .icon-green { background: #dcfce7; color: #16a34a; }
-        .icon-yellow { background: #fef9c3; color: #ca8a04; }
-        .icon-indigo { background: #e0e7ff; color: #4f46e5; }
-        .icon-pink { background: #fce7f3; color: #db2777; }
-        .icon-teal { background: #ccfbf1; color: #0d9488; }
-        .icon-cyan { background: #cffafe; color: #0891b2; }
-        .icon-red { background: #fee2e2; color: #dc2626; }
-        .dark .icon-blue { background: #1e3a5f; color: #60a5fa; }
-        .dark .icon-purple { background: #3b0764; color: #c4b5fd; }
-        .dark .icon-green { background: #14532d; color: #4ade80; }
-        .dark .icon-yellow { background: #422006; color: #fde047; }
-        .dark .icon-indigo { background: #312e81; color: #a5b4fc; }
-        .dark .icon-pink { background: #500724; color: #f9a8d4; }
-        .dark .icon-teal { background: #134e4a; color: #5eead4; }
-        .dark .icon-cyan { background: #164e63; color: #67e8f9; }
-        .dark .icon-red { background: #450a0a; color: #fca5a5; }
         
         footer {
             text-align: center;
@@ -240,7 +191,7 @@
             margin-top: 1rem;
             border-top: 1px solid var(--border);
             color: var(--text-muted);
-            font-size: 0.875rem;
+            font-size: 0.85rem;
         }
     </style>
 </head>
@@ -256,146 +207,138 @@
                 <svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
             </div>
             <h1>YouTube Video Downloader</h1>
-            <p class="subtitle">Dokumentacja <br>
-                <span style="font-size: 0.875rem">@author: Marcin Kępa<br>
-                <a href="https://github.com/kepamarcin/YTdownloader" style="color: #f87171">https://github.com/kepamarcin/YTdownloader</a></span></p>
+            <p class="subtitle">Aplikacja konsolowa do pobierania wideo z YouTube</p>
+            <p class="author"><strong>Autor:</strong> Marcin Kępa · <a href="https://github.com/kepamarcin/YTdownloader" target="_blank">https://github.com/kepamarcin/YTdownloader</a></p>
         </header>
 
         <div class="card">
-            <h2><span class="icon icon-blue"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>Opis</h2>
-            <p>Aplikacja konsolowa do pobierania wideo z YouTube przy użyciu najnowszej wersji <code>yt-dlp</code> i <code>ffmpeg</code>. Zoptymalizowana pod kątem YouTube.</p>
+            <h2><span class="emoji">🚀</span> Wymagania wstępne</h2>
+            <p>Zanim zaczniesz, upewnij się, że masz zainstalowane niezbędne narzędzia.</p>
+            
+            <h3>1. Instalacja Git</h3>
+            <span class="badge badge-win">Windows</span>
+            <p>Pobierz instalator ze strony <a href="https://git-scm.com/download/win" target="_blank">git-scm.com</a>, uruchom i postępuj zgodnie z instrukcjami. Sprawdź instalację: <code>git --version</code></p>
+            
+            <span class="badge badge-unix">Linux (Debian/Ubuntu)</span>
+            <pre><code>sudo apt update
+sudo apt install git</code></pre>
+            
+            <span class="badge badge-unix">macOS</span>
+            <pre><code>brew install git</code></pre>
+
+            <h3>2. Instalacja Python</h3>
+            <span class="badge badge-win">Windows</span>
+            <p>Pobierz ze strony <a href="https://www.python.org/" target="_blank">python.org</a>. <strong>Ważne:</strong> Zaznacz opcję "Add Python to PATH".</p>
+            
+            <span class="badge badge-unix">Linux/macOS</span>
+            <p>Python jest zazwyczaj zainstalowany. Sprawdź: <code>python3 --version</code><br>Wymagana wersja: <strong>Python 3.8+</strong></p>
         </div>
 
         <div class="card">
-            <h2><span class="icon icon-purple"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>Wymagania</h2>
+            <h2><span class="emoji">📥</span> Pobieranie repozytorium</h2>
+            <p>Otwórz terminal w folderze, w którym chcesz zapisać projekt:</p>
+            <pre><code>git clone https://github.com/kepamarcin/YTdownloader.git
+cd YTdownloader</code></pre>
+        </div>
+
+        <div class="card">
+            <h2><span class="emoji">⚙️</span> Instalacja i konfiguracja</h2>
+            
+            <h3>1. Utwórz środowisko wirtualne</h3>
+            <span class="badge badge-win">Windows</span>
+            <pre><code>python -m venv venv
+venv\Scripts\activate</code></pre>
+            <div class="note">Jeśli wystąpi błąd uprawnień: <code>Set-ExecutionPolicy Bypass -Scope Process</code></div>
+            
+            <span class="badge badge-unix">Linux/macOS</span>
+            <pre><code>python3 -m venv venv
+source venv/bin/activate</code></pre>
+
+            <h3>2. Zainstaluj zależności</h3>
+            <p>Upewnij się, że widzisz <code>(venv)</code> w terminalu:</p>
+            <pre><code>pip install -r requirements.txt</code></pre>
+        </div>
+
+        <div class="card">
+            <h2><span class="emoji">▶️</span> Uruchomienie</h2>
+            <div class="grid grid-2">
+                <div>
+                    <span class="badge badge-win">Windows</span>
+                    <pre><code>python main.py</code></pre>
+                </div>
+                <div>
+                    <span class="badge badge-unix">Linux/macOS</span>
+                    <pre><code>python3 main.py</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="emoji">📖</span> Użycie</h2>
+            <ol>
+                <li><span class="num">1</span>Uruchom aplikację</li>
+                <li><span class="num">2</span>Wklej URL YouTube, gdy zostaniesz poproszony</li>
+                <li><span class="num">3</span>Poczekaj na pobranie (postęp w konsoli)</li>
+                <li><span class="num">4</span>Plik MP4 zapisze się w <code>downloads/</code></li>
+                <li><span class="num">5</span>Wpisz <code>q</code> aby wyjść</li>
+            </ol>
+            
+            <h3>Obsługiwane formaty URL</h3>
             <ul>
-                <li><span class="bullet"></span>Python 3.8 lub nowszy</li>
-                <li><span class="bullet"></span>ffmpeg (plik wykonywalny w katalogu <code>ffmpeg/</code>)</li>
+                <li><span class="bullet"></span><code>https://www.youtube.com/watch?v=XXXX</code> — standardowe wideo</li>
+                <li><span class="bullet"></span><code>https://youtu.be/XXXX</code> — skrócony link</li>
+                <li><span class="bullet"></span><code>https://youtube.com/shorts/XXXX</code> — YouTube Shorts</li>
+                <li><span class="bullet"></span><code>https://youtube.com/live/XXXX</code> — transmisje na żywo</li>
+                <li><span class="bullet"></span><code>https://youtube.com/playlist?list=XXXX</code> — playlisty</li>
             </ul>
         </div>
 
         <div class="card">
-            <h2><span class="icon icon-green"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg></span>Instalacja</h2>
-            
-            <h3>1. Utwórz środowisko wirtualne</h3>
-            <span class="badge badge-win">Windows</span>
-            <pre><code>> python -m venv venv
-> Set-ExecutionPolicy Bypass -Scope Process ## w razie problemów!
-> venv\Scripts\activate</code></pre>
-            <span class="badge badge-unix">Linux/macOS</span>
-            <pre><code>$ python3 -m venv venv
-$ source venv/bin/activate</code></pre>
-
-            <h3>2. Zainstaluj zależności</h3>
-            <pre><code>(venv) > pip install -r requirements.txt</code></pre>
-
-            <h3>3. Aktualizacja yt-dlp</h3>
-            <pre><code>(venv) > pip install --upgrade yt-dlp</code></pre>
-
-            <h3>4. Dodaj ffmpeg</h3>
-            <div class="info-box">
-                <p><strong>Windows:</strong> <code>ffmpeg/ffmpeg.exe</code></p>
-                <p><strong>Linux/macOS:</strong> <code>ffmpeg/ffmpeg</code> (nadaj uprawnienia: <code>chmod +x ffmpeg/ffmpeg</code>)</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2><span class="icon icon-yellow"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>Uruchomienie</h2>
-            <div class="grid grid-2">
-                <div>
-                    <span class="badge badge-win">Windows</span>
-                    <pre><code>> venv\Scripts\activate
-> python main.py</code></pre>
-                </div>
-                <div>
-                    <span class="badge badge-unix">Linux/macOS</span>
-                    <pre><code>$ source venv/bin/activate
-$ python main.py</code></pre>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2><span class="icon icon-indigo"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>Użycie</h2>
-            <ol>
-                <li><span class="num">1</span>Uruchom aplikację</li>
-                <li><span class="num">2</span><div>Wklej URL YouTube, np.:<br><code>https://www.youtube.com/watch?v=dQw4w9WgXcQ</code><br><code>https://youtu.be/dQw4w9WgXcQ</code></div></li>
-                <li><span class="num">3</span>Poczekaj na pobranie (wyświetlany jest postęp)</li>
-                <li><span class="num">4</span>Plik MP4 zostanie zapisany w katalogu <code>downloads/</code></li>
-                <li><span class="num">5</span>Wpisz <code>q</code> aby wyjść</li>
-            </ol>
-        </div>
-
-        <div class="card">
-            <h2><span class="icon icon-pink"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></span>Obsługiwane formaty URL</h2>
-            <table>
-                <tr><th>Format URL</th><th>Typ</th></tr>
-                <tr><td><code>https://www.youtube.com/watch?v=XXXXX</code></td><td>Standardowe wideo</td></tr>
-                <tr><td><code>https://youtu.be/XXXXX</code></td><td>Skrócony link</td></tr>
-                <tr><td><code>https://youtube.com/shorts/XXXXX</code></td><td>YouTube Shorts</td></tr>
-                <tr><td><code>https://youtube.com/live/XXXXX</code></td><td>Transmisje na żywo</td></tr>
-                <tr><td><code>https://youtube.com/playlist?list=XXXXX</code></td><td>Playlisty</td></tr>
-            </table>
-        </div>
-
-        <div class="card">
-            <h2><span class="icon icon-teal"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg></span>Struktura katalogów</h2>
-            <pre><code>video_downloader/
-├── ffmpeg/           <span class="comment">← Tu umieść ffmpeg</span>
-│   └── ffmpeg(.exe)
+            <h2><span class="emoji">📂</span> Struktura katalogów</h2>
+            <pre><code>YTdownloader/
+├── ffmpeg/           <span class="comment">← Tu umieść ffmpeg(.exe)</span>
 ├── downloads/        <span class="comment">← Pobrane filmy (MP4)</span>
 ├── venv/             <span class="comment">← Środowisko wirtualne</span>
 ├── main.py           <span class="comment">← Główny plik aplikacji</span>
 ├── requirements.txt  <span class="comment">← Lista zależności</span>
-└── readme.txt        <span class="comment">← Dokumentacja</span></code></pre>
+└── README.md         <span class="comment">← Dokumentacja</span></code></pre>
         </div>
 
         <div class="card">
-            <h2><span class="icon icon-cyan"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span>Konfiguracja</h2>
+            <h2><span class="emoji">🔧</span> Konfiguracja wewnętrzna</h2>
             <div class="grid grid-2">
-                <div class="info-box"><span class="label">Format</span><p class="value">Najlepsza jakość do 1080p w MP4</p></div>
-                <div class="info-box"><span class="label">Player client</span><p class="value">android + web</p></div>
+                <div class="info-box"><span class="label">Format</span><p class="value">Najlepsza jakość do 1080p (MP4)</p></div>
+                <div class="info-box"><span class="label">Player client</span><p class="value">Android + Web</p></div>
                 <div class="info-box"><span class="label">Geo bypass</span><p class="value">Włączony</p></div>
-                <div class="info-box"><span class="label">Retry</span><p class="value">10 prób przy błędach</p></div>
+                <div class="info-box"><span class="label">Retry</span><p class="value">10 prób</p></div>
                 <div class="info-box"><span class="label">Timeout</span><p class="value">30 sekund</p></div>
             </div>
         </div>
 
         <div class="card">
-            <h2><span class="icon icon-red"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg></span>Rozwiązywanie problemów</h2>
-            
-            <div class="problem problem-red">
-                <p class="problem-title">"Nie znaleziono ffmpeg"</p>
-                <p class="problem-solution">Umieść plik ffmpeg w katalogu <code>ffmpeg/</code></p>
-            </div>
-            <div class="problem problem-orange">
-                <p class="problem-title">"Sign in to confirm your age"</p>
-                <p class="problem-solution">Wideo ma ograniczenie wiekowe - wymaga cookies</p>
-            </div>
-            <div class="problem problem-yellow">
-                <p class="problem-title">"Video unavailable"</p>
-                <p class="problem-solution">Wideo może być zablokowane w Twoim regionie</p>
-            </div>
-            <div class="problem problem-blue">
-                <p class="problem-title">Wolne pobieranie</p>
-                <p class="problem-solution">YouTube może ograniczać prędkość - to normalne</p>
-            </div>
-            <div class="problem problem-purple">
-                <p class="problem-title">Stara wersja yt-dlp</p>
-                <p class="problem-solution">Uruchom: <code>pip install --upgrade yt-dlp</code></p>
-            </div>
+            <h2><span class="emoji">❓</span> Rozwiązywanie problemów</h2>
+            <table>
+                <tr><th>Problem</th><th>Rozwiązanie</th></tr>
+                <tr><td>"Nie znaleziono ffmpeg"</td><td>Umieść <code>ffmpeg</code> w folderze <code>ffmpeg/</code></td></tr>
+                <tr><td>"Sign in to confirm your age"</td><td>Wideo wymaga cookies (nieobsługiwane)</td></tr>
+                <tr><td>"Video unavailable"</td><td>Wideo zablokowane w regionie lub usunięte</td></tr>
+                <tr><td>Wolne pobieranie</td><td>YouTube throttling — normalne zachowanie</td></tr>
+                <tr><td>Błędy pobierania</td><td><code>pip install --upgrade yt-dlp</code></td></tr>
+            </table>
         </div>
 
-        <footer>YouTube Video Downloader - Dokumentacja</footer>
+        <footer>
+            YouTube Video Downloader · Marcin Kępa · <a href="https://github.com/kepamarcin/YTdownloader" target="_blank" style="color: #ef4444;">GitHub</a>
+        </footer>
     </div>
 
     <script>
         const toggle = document.getElementById('themeToggle');
         const html = document.documentElement;
         
-        if (localStorage.getItem('theme') === 'dark' || 
-            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            html.classList.add('dark');
+        // Domyślnie ciemny, chyba że użytkownik wybrał jasny
+        if (localStorage.getItem('theme') === 'light') {
+            html.classList.remove('dark');
         }
         
         toggle.onclick = () => {
