@@ -1,89 +1,103 @@
+YouTube Video Downloader
+
+Aplikacja konsolowa do pobierania wideo z YouTube przy użyciu najnowszej wersji yt-dlp i ffmpeg. Zoptymalizowana pod kątem YouTube, obsługuje standardowe wideo, Shorts, transmisje na żywo oraz playlisty.
+
+Autor: Marcin Kępa
+GitHub: https://github.com/kepamarcin/YTdownloader
+
 ================================================================================
-                    YOUTUBE VIDEO DOWNLOADER - DOKUMENTACJA
-================================================================================
 
-@author: Marcin Kępa
-@github: https://github.com/kepamarcin/YTdownloader
+🚀 Wymagania wstępne
 
-OPIS:
-Aplikacja konsolowa do pobierania wideo z YouTube przy użyciu najnowszej
-wersji yt-dlp i ffmpeg. Zoptymalizowana pod kątem YouTube.
+Zanim zaczniesz, upewnij się, że masz zainstalowane niezbędne narzędzia.
 
---------------------------------------------------------------------------------
-WYMAGANIA:
---------------------------------------------------------------------------------
-- Python 3.8 lub nowszy
-- ffmpeg (plik wykonywalny w katalogu ffmpeg/)
-
---------------------------------------------------------------------------------
-INSTALACJA:
---------------------------------------------------------------------------------
-
-1. Utwórz środowisko wirtualne:
-
-   Windows:
-   > python -m venv venv
-   > Set-ExecutionPolicy Bypass -Scope Process ## w razie problemów!
-   > venv\Scripts\activate
-
-   Linux/macOS:
-   $ python3 -m venv venv
-   $ source venv/bin/activate
-
-2. Zainstaluj zależności (najnowsza wersja yt-dlp):
-   
-   (venv) > pip install -r requirements.txt
-   
-   lub
-   
-   (venv) $ pip install -r requirements.txt
-
-3. Aktualizacja yt-dlp do najnowszej wersji:
-   
-   (venv) > pip install --upgrade yt-dlp
-
-4. Dodaj plik ffmpeg do katalogu ffmpeg/:
-   
-   Windows: ffmpeg/ffmpeg.exe
-   Linux/macOS: ffmpeg/ffmpeg (nadaj uprawnienia: chmod +x ffmpeg/ffmpeg)
-
---------------------------------------------------------------------------------
-URUCHOMIENIE:
---------------------------------------------------------------------------------
+1. Instalacja Git
 
 Windows:
-> venv\Scripts\activate
-> python main.py
+1. Pobierz instalator ze strony https://git-scm.com/download/win
+2. Uruchom instalator i postępuj zgodnie z instrukcjami (domyślne ustawienia są zazwyczaj wystarczające).
+3. Po instalacji otwórz terminal (CMD lub PowerShell) i wpisz git --version, aby sprawdzić poprawność instalacji.
+
+Linux (Debian/Ubuntu):
+    sudo apt update
+    sudo apt install git
+
+macOS:
+Jeśli masz zainstalowane Homebrew:
+    brew install git
+
+2. Instalacja Python
+
+Windows:
+1. Pobierz instalator ze strony https://www.python.org/
+2. Ważne: Podczas instalacji zaznacz opcję "Add Python to PATH".
+3. Kliknij "Install Now".
 
 Linux/macOS:
-$ source venv/bin/activate
-$ python main.py
+Python jest zazwyczaj zainstalowany domyślnie. Sprawdź wersję wpisując:
+    python3 --version
+Wymagana wersja: Python 3.8 lub nowszy.
 
---------------------------------------------------------------------------------
-UŻYCIE:
---------------------------------------------------------------------------------
+================================================================================
 
-1. Uruchom aplikację
-2. Wklej URL YouTube, np.:
-   - https://www.youtube.com/watch?v=dQw4w9WgXcQ
-   - https://youtu.be/dQw4w9WgXcQ
-   - https://youtube.com/shorts/XXXXX
-3. Poczekaj na pobranie (wyświetlany jest postęp)
+📥 Pobieranie repozytorium
+
+Otwórz terminal w folderze, w którym chcesz zapisać projekt i wykonaj polecenie:
+    git clone https://github.com/kepamarcin/YTdownloader.git
+    cd YTdownloader
+
+================================================================================
+
+⚙️ Instalacja i konfiguracja
+
+1. Utwórz środowisko wirtualne
+
+Windows: W terminalu. Nie bać się, nie gryzie.
+    python -m venv venv
+    # Jeśli wystąpi błąd uprawnień, wykonaj: Set-ExecutionPolicy Bypass -Scope Process
+    venv\Scripts\activate
+
+Linux/macOS:
+    python3 -m venv venv
+    source venv/bin/activate
+
+2. Zainstaluj zależności
+
+Upewnij się, że środowisko wirtualne jest aktywne (powinieneś widzieć (venv) w terminalu), a następnie zainstaluj biblioteki:
+    pip install -r requirements.txt
+
+================================================================================
+
+▶️ Uruchomienie
+
+Upewnij się, że jesteś w katalogu projektu i masz aktywne środowisko wirtualne.
+
+Windows:
+    python main.py
+
+Linux/macOS:
+    python3 main.py
+
+================================================================================
+
+📖 Użycie
+
+1. Uruchom aplikację.
+2. Wklej URL YouTube, gdy zostaniesz o to poproszony.
+3. Poczekaj na pobranie (postęp będzie wyświetlany w konsoli).
 4. Plik MP4 zostanie zapisany w katalogu downloads/
-5. Wpisz 'q' aby wyjść
+5. Wpisz q, aby wyjść z programu.
 
---------------------------------------------------------------------------------
-OBSŁUGIWANE FORMATY URL:
---------------------------------------------------------------------------------
-- https://www.youtube.com/watch?v=XXXXX  (standardowe wideo)
-- https://youtu.be/XXXXX                  (skrócony link)
-- https://youtube.com/shorts/XXXXX        (YouTube Shorts)
-- https://youtube.com/live/XXXXX          (transmisje na żywo)
-- https://youtube.com/playlist?list=XXXXX (playlisty)
+Obsługiwane formaty URL:
+• https://www.youtube.com/watch?v=XXXX (standardowe wideo)
+• https://youtu.be/XXXX (skrócony link)
+• https://youtube.com/shorts/XXXX (YouTube Shorts)
+• https://youtube.com/live/XXXX (transmisje na żywo)
+• https://youtube.com/playlist?list=XXXX (playlisty)
 
---------------------------------------------------------------------------------
-STRUKTURA KATALOGÓW:
---------------------------------------------------------------------------------
+================================================================================
+
+📂 Struktura katalogów
 
 video_downloader/
 ├── ffmpeg/           <- Tu umieść plik ffmpeg/ffmpeg.exe
@@ -92,34 +106,27 @@ video_downloader/
 ├── venv/             <- Środowisko wirtualne
 ├── main.py           <- Główny plik aplikacji
 ├── requirements.txt  <- Lista zależności
-└── readme.txt        <- Ten plik
-
---------------------------------------------------------------------------------
-KONFIGURACJA YOUTUBE W APLIKACJI:
---------------------------------------------------------------------------------
-- Format: najlepsza jakość do 1080p w MP4
-- Player client: android + web (lepsza kompatybilność)
-- Geo bypass: włączony
-- Retry: 10 prób przy błędach
-- Timeout: 30 sekund
-
---------------------------------------------------------------------------------
-ROZWIĄZYWANIE PROBLEMÓW:
---------------------------------------------------------------------------------
-
-Problem: "Nie znaleziono ffmpeg"
-Rozwiązanie: Umieść plik ffmpeg w katalogu ffmpeg/
-
-Problem: "Sign in to confirm your age"
-Rozwiązanie: Wideo ma ograniczenie wiekowe - wymaga cookies
-
-Problem: "Video unavailable"
-Rozwiązanie: Wideo może być zablokowane w Twoim regionie
-
-Problem: Wolne pobieranie
-Rozwiązanie: YouTube może ograniczać prędkość - to normalne
-
-Problem: Stara wersja yt-dlp
-Rozwiązanie: pip install --upgrade yt-dlp
+└── readme.txt        <- Oryginalna dokumentacja
 
 ================================================================================
+
+🔧 Konfiguracja wewnętrzna
+
+Aplikacja jest domyślnie skonfigurowana dla optymalnej wydajności:
+• Format: Najlepsza jakość do 1080p w MP4.
+• Player client: Android + Web (dla lepszej kompatybilności).
+• Geo bypass: Włączony.
+• Retry: 10 prób przy błędach sieciowych.
+• Timeout: 30 sekund.
+
+================================================================================
+
+❓ Rozwiązywanie problemów
+
+Problem                          | Rozwiązanie
+---------------------------------|---------------------------------------------
+"Nie znaleziono ffmpeg"          | Upewnij się, że plik ffmpeg (lub ffmpeg.exe) znajduje się w folderze ffmpeg/
+"Sign in to confirm your age"    | Wideo ma ograniczenie wiekowe i wymaga plików cookies (obecnie nieobsługiwane)
+"Video unavailable"              | Wideo może być zablokowane w Twoim regionie lub usunięte
+Wolne pobieranie                 | YouTube może ograniczać prędkość (throttling) - normalne zachowanie
+Błędy pobierania                 | Spróbuj zaktualizować bibliotekę: pip install --upgrade yt-dlp
