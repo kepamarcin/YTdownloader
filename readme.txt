@@ -78,6 +78,10 @@ Windows:
 Linux/macOS:
     python3 main.py
 
+Po skończeniu pobierania deaktywacja venv:
+
+Terminal:
+    deactivate
 ================================================================================
 
 📖 Użycie
