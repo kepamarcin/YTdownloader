@@ -1,22 +1,22 @@
-### YouTube Video Downloader
+### YouTube Video Downloader v2
 
-Aplikacja konsolowa do pobierania wideo z YouTube przy użyciu najnowszej wersji `yt-dlp` i `ffmpeg`. Zoptymalizowana pod kątem YouTube, obsługuje standardowe wideo, Shorts, transmisje na żywo oraz playlisty.
+Aplikacja konsolowa do pobierania wideo z YouTube w wysokiej rozdzielczosci (do 1080p) przy uzyciu `yt-dlp`, `ffmpeg` i systemu PO Token. Obsluguje standardowe wideo, Shorts, transmisje na zywo oraz playlisty.
 
-**Autor:** Marcin Kępa  
+**Autor:** Marcin Kepa  
 **GitHub:** [https://github.com/kepamarcin/YTdownloader](https://github.com/kepamarcin/YTdownloader)
 
 ---
 
-#### 🚀 Wymagania wstępne
+#### Wymagania wstepne
 
-Zanim zaczniesz, upewnij się, że masz zainstalowane niezbędne narzędzia.
+Zanim zaczniesz, upewnij sie, ze masz zainstalowane niezbedne narzedzia.
 
-#### 1. Instalacja Git
+#### 1. Git
 
 **Windows:**
 1. Pobierz instalator ze strony [git-scm.com](https://git-scm.com/download/win).
-2. Uruchom instalator i postępuj zgodnie z instrukcjami (domyślne ustawienia są zazwyczaj wystarczające).
-3. Po instalacji otwórz terminal (CMD lub PowerShell) i wpisz `git --version`, aby sprawdzić poprawność instalacji.
+2. Uruchom instalator i postepuj zgodnie z instrukcjami (domyslne ustawienia sa zazwyczaj wystarczajace).
+3. Po instalacji otwórz terminal (CMD lub PowerShell) i wpisz `git --version`, aby sprawdzic poprawnosc instalacji.
 
 **Linux (Debian/Ubuntu):**
 ```bash
@@ -25,30 +25,49 @@ sudo apt install git
 ```
 
 **macOS:**
-Jeśli masz zainstalowane Homebrew:
 ```bash
 brew install git
 ```
 
-#### 2. Instalacja Python
+#### 2. Python (3.8+)
 
 **Windows:**
 1. Pobierz instalator ze strony [python.org](https://www.python.org/).
-2. **Ważne:** Podczas instalacji zaznacz opcję **"Add Python to PATH"**.
+2. **Wazne:** Podczas instalacji zaznacz opcje **"Add Python to PATH"**.
 3. Kliknij "Install Now".
 
 **Linux/macOS:**
-Python jest zazwyczaj zainstalowany domyślnie. Sprawdź wersję wpisując:
+Python jest zazwyczaj zainstalowany domyslnie. Sprawdz wersje:
 ```bash
 python3 --version
 ```
-Wymagana wersja: Python 3.8 lub nowszy.
+
+#### 3. Node.js (20+)
+
+Node.js jest wymagany do rozwiazywania zabezpieczen YouTube (n-challenge oraz generowanie PO Token).
+
+**Windows:**
+Pobierz instalator ze strony [nodejs.org](https://nodejs.org/) (wersja LTS). Po instalacji sprawdz:
+```powershell
+node --version
+```
+
+**Linux (Debian/Ubuntu):**
+```bash
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt install -y nodejs
+```
+
+**macOS:**
+```bash
+brew install node
+```
 
 ---
 
-#### 📥 Pobieranie repozytorium
+#### Pobieranie repozytorium
 
-Otwórz terminal w folderze, w którym chcesz zapisać projekt i wykonaj polecenie:
+Otwórz terminal w folderze, w którym chcesz zapisac projekt i wykonaj polecenie:
 ```bash
 git clone https://github.com/kepamarcin/YTdownloader.git
 cd YTdownloader
@@ -56,14 +75,14 @@ cd YTdownloader
 
 ---
 
-#### ⚙️ Instalacja i konfiguracja
+#### Instalacja i konfiguracja
 
-#### 1. Utwórz środowisko wirtualne
+#### 1. Utwórz srodowisko wirtualne
 
-**Windows:** W terminalu. Nie bać się, nie gryzie.
+**Windows:**
 ```powershell
 python -m venv venv
-# Jeśli wystąpi błąd uprawnień, wykonaj: Set-ExecutionPolicy Bypass -Scope Process
+# Jesli wystapi blad uprawnien, wykonaj: Set-ExecutionPolicy Bypass -Scope Process
 venv\Scripts\activate
 ```
 
@@ -73,17 +92,39 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-#### 2. Zainstaluj zależności
+#### 2. Zainstaluj zaleznosci
 
-Upewnij się, że środowisko wirtualne jest aktywne (powinieneś widzieć `(venv)` w terminalu), a następnie zainstaluj biblioteki:
+Upewnij sie, ze srodowisko wirtualne jest aktywne (powinienes widziec `(venv)` w terminalu), a nastepnie zainstaluj biblioteki:
 ```bash
 pip install -r requirements.txt
 ```
 
+#### 3. Skonfiguruj PO Token (wymagane do HD)
 
-#### ▶️ Uruchomienie
+YouTube wymaga tokenów PO (Proof of Origin) do udostepniania wideo w wysokiej rozdzielczosci. Bez tego kroku dostepna bedzie tylko jakosc 360p.
 
-Upewnij się, że jesteś w katalogu projektu i masz aktywne środowisko wirtualne.
+```bash
+git clone --single-branch --branch 1.3.1 https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git ~/bgutil-ytdlp-pot-provider
+cd ~/bgutil-ytdlp-pot-provider/server
+npm ci
+npx tsc
+```
+
+Na Windows sciezka domowa to `C:\Users\TwojaNazwaUzytkownika\`. Mozesz równiez uzyc:
+```powershell
+git clone --single-branch --branch 1.3.1 https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git %USERPROFILE%\bgutil-ytdlp-pot-provider
+cd %USERPROFILE%\bgutil-ytdlp-pot-provider\server
+npm ci
+npx tsc
+```
+
+> **Uwaga:** Repozytorium bgutil musi znajdowac sie w katalogu domowym uzytkownika (`~/bgutil-ytdlp-pot-provider`). Plugin automatycznie szuka go w tej lokalizacji.
+
+---
+
+#### Uruchomienie
+
+Upewnij sie, ze jestes w katalogu projektu i masz aktywne srodowisko wirtualne.
 
 **Windows:**
 ```powershell
@@ -95,62 +136,68 @@ python main.py
 python3 main.py
 ```
 
-**Po skończeniu pobierania deaktywacja venv:**
+**Po zakonczeniu pracy — deaktywacja venv:**
 ```bash
 deactivate
 ```
 
 ---
 
-#### 📖 Użycie
+#### Uzycie
 
-1. Uruchom aplikację.
+1. Uruchom aplikacje.
 2. Wklej URL YouTube, gdy zostaniesz o to poproszony.
-3. Poczekaj na pobranie (postęp będzie wyświetlany w konsoli).
+3. Poczekaj na pobranie (postep bedzie wyswietlany w konsoli).
 4. Plik MP4 zostanie zapisany w katalogu `downloads/`.
-5. Wpisz `q`, aby wyjść z programu.
+5. Wpisz `q`, aby wyjsc z programu.
 
-**Obsługiwane formaty URL:**
+**Obslugiwane formaty URL:**
 * `https://www.youtube.com/watch?v=XXXX` (standardowe wideo)
 * `https://youtu.be/XXXX` (skrócony link)
 * `https://youtube.com/shorts/XXXX` (YouTube Shorts)
-* `https://youtube.com/live/XXXX` (transmisje na żywo)
+* `https://youtube.com/live/XXXX` (transmisje na zywo)
 * `https://youtube.com/playlist?list=XXXX` (playlisty)
 
 ---
 
-#### 📂 Struktura katalogów
+#### Struktura katalogów
 
 ```text
-video_downloader/
-├── ffmpeg/           <- Tu umieść plik ffmpeg/ffmpeg.exe
+YTdownloader/
+├── ffmpeg/           <- Plik ffmpeg/ffmpeg.exe (dolaczony)
 │   └── ffmpeg(.exe)
-├── downloads/        <- Tu będą zapisywane pobrane filmy (MP4)
-├── venv/             <- Środowisko wirtualne
-├── main.py           <- Główny plik aplikacji
-├── requirements.txt  <- Lista zależności
-└── readme.txt        <- Oryginalna dokumentacja
+├── downloads/        <- Pobrane filmy (MP4)
+├── venv/             <- Srodowisko wirtualne
+├── main.py           <- Glówny plik aplikacji
+├── requirements.txt  <- Lista zaleznosci
+└── README.md         <- Dokumentacja
 ```
 
 ---
 
-#### 🔧 Konfiguracja wewnętrzna
+#### Konfiguracja wewnetrzna
 
-Aplikacja jest domyślnie skonfigurowana dla optymalnej wydajności:
-* **Format:** Najlepsza jakość do 1080p w MP4.
-* **Player client:** Android + Web (dla lepszej kompatybilności).
-* **Geo bypass:** Włączony.
-* **Retry:** 10 prób przy błędach sieciowych.
+Aplikacja jest domyslnie skonfigurowana dla optymalnej wydajnosci:
+* **Format:** Najlepsza jakosc do 1080p w MP4.
+* **Player client:** Web + mWeb (z obsluga PO tokenów).
+* **JS Runtime:** Node.js (do rozwiazywania n-challenge YouTube).
+* **PO Token:** Automatyczne generowanie przez bgutil (tryb script).
+* **Geo bypass:** Wlaczony.
+* **Retry:** 10 prób przy bledach sieciowych.
 * **Timeout:** 30 sekund.
 
 ---
 
-#### ❓ Rozwiązywanie problemów
+#### Rozwiazywanie problemów
 
-| Problem | Rozwiązanie |
+| Problem | Rozwiazanie |
 | :--- | :--- |
-| "Nie znaleziono ffmpeg" | Upewnij się, że plik `ffmpeg` (lub `ffmpeg.exe`) znajduje się w folderze `ffmpeg/`. |
-| "Sign in to confirm your age" | Wideo ma ograniczenie wiekowe i wymaga plików cookies (obecnie nieobsługiwane w tej wersji). |
-| "Video unavailable" | Wideo może być zablokowane w Twoim regionie lub usunięte. |
-| Wolne pobieranie | YouTube może ograniczać prędkość (throttling) - jest to normalne zachowanie serwisu. |
-| Błędy pobierania | Spróbuj zaktualizować bibliotekę: `pip install --upgrade yt-dlp`. |
+| "Nie znaleziono ffmpeg" | Upewnij sie, ze plik `ffmpeg` (lub `ffmpeg.exe`) znajduje sie w folderze `ffmpeg/`. |
+| "ffmpeg is not installed" przy HD | Sprawdz czy w folderze `ffmpeg/` jest plik `ffmpeg.exe` (Windows) lub `ffmpeg` (Linux/macOS). |
+| Tylko 360p, brak HD | Sprawdz czy bgutil jest sklonowany i zbudowany w `~/bgutil-ytdlp-pot-provider/server/`. Sprawdz czy Node.js >= 20 jest zainstalowany: `node --version`. |
+| WARNING: pot:bgutil:http | To normalne ostrzezenie — plugin automatycznie przechodzi na tryb script. Mozna zignorowac. |
+| "n challenge solving failed" | Zainstaluj Node.js >= 20 i upewnij sie, ze jest w PATH. Zaktualizuj yt-dlp: `pip install -U "yt-dlp[default]"`. |
+| "Sign in to confirm your age" | Wideo ma ograniczenie wiekowe i wymaga plików cookies (obecnie nieobslugiwane w tej wersji). |
+| "Video unavailable" | Wideo moze byc zablokowane w Twoim regionie lub usuniete. |
+| Wolne pobieranie | YouTube moze ograniczac predkosc (throttling) — jest to normalne zachowanie serwisu. |
+| Bledy pobierania | Spróbuj zaktualizowac: `pip install -U "yt-dlp[default]" bgutil-ytdlp-pot-provider`. |

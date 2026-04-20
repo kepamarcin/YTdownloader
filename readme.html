@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Video Downloader - Dokumentacja</title>
+    <title>YouTube Video Downloader v2 - Dokumentacja</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         :root {
             --bg: #f9fafb;
             --bg-card: #ffffff;
@@ -16,7 +16,7 @@
             --code-bg: #f3f4f6;
             --pre-bg: #111827;
         }
-        
+
         .dark {
             --bg: #0f172a;
             --bg-card: #1e293b;
@@ -26,7 +26,7 @@
             --code-bg: #334155;
             --pre-bg: #020617;
         }
-        
+
         body {
             font-family: system-ui, -apple-system, sans-serif;
             background: var(--bg);
@@ -34,9 +34,9 @@
             line-height: 1.6;
             transition: background 0.3s, color 0.3s;
         }
-        
+
         .container { max-width: 900px; margin: 0 auto; padding: 3rem 1rem; }
-        
+
         .theme-toggle {
             position: fixed;
             top: 1rem;
@@ -58,7 +58,7 @@
         .moon { display: block; color: #94a3b8; }
         .dark .sun { display: block; }
         .dark .moon { display: none; }
-        
+
         header { text-align: center; margin-bottom: 3rem; }
         .logo {
             width: 80px; height: 80px;
@@ -84,7 +84,7 @@
         .author { font-size: 0.9rem; color: var(--text-muted); }
         .author a { color: #ef4444; text-decoration: none; }
         .author a:hover { text-decoration: underline; }
-        
+
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -93,7 +93,7 @@
             margin-bottom: 1.5rem;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
-        
+
         h2 {
             font-size: 1.4rem;
             font-weight: 600;
@@ -103,11 +103,11 @@
             gap: 0.6rem;
         }
         h2 .emoji { font-size: 1.3rem; }
-        
+
         h3 { font-size: 1.05rem; font-weight: 600; margin: 1.25rem 0 0.75rem; color: var(--text); }
-        
+
         p { margin-bottom: 0.75rem; }
-        
+
         code {
             font-family: 'SF Mono', Consolas, Monaco, monospace;
             background: var(--code-bg);
@@ -127,7 +127,7 @@
         }
         pre code { background: none; padding: 0; }
         .comment { color: #64748b; }
-        
+
         ul, ol { padding-left: 0; list-style: none; margin: 0.5rem 0; }
         li { margin: 0.4rem 0; display: flex; align-items: flex-start; gap: 0.6rem; }
         .bullet { width: 6px; height: 6px; background: #ef4444; border-radius: 50%; margin-top: 0.55rem; flex-shrink: 0; }
@@ -143,7 +143,7 @@
             font-weight: 700;
             flex-shrink: 0;
         }
-        
+
         .badge {
             display: inline-block;
             padding: 0.2rem 0.6rem;
@@ -158,10 +158,10 @@
         .dark .badge-unix { background: #365314; color: #bef264; }
         html:not(.dark) .badge-win { background: #dbeafe; color: #1d4ed8; }
         html:not(.dark) .badge-unix { background: #dcfce7; color: #15803d; }
-        
+
         .grid { display: grid; gap: 0.75rem; }
         @media (min-width: 640px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
-        
+
         .info-box {
             background: var(--code-bg);
             padding: 0.75rem 1rem;
@@ -169,13 +169,13 @@
         }
         .info-box .label { font-size: 0.8rem; color: var(--text-muted); }
         .info-box .value { font-weight: 500; font-size: 0.95rem; }
-        
+
         table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
         th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border); }
         th { font-weight: 600; background: var(--code-bg); }
         th:first-child { border-radius: 0.5rem 0 0 0; }
         th:last-child { border-radius: 0 0.5rem 0 0; }
-        
+
         .note {
             background: rgba(239,68,68,0.1);
             border-left: 3px solid #ef4444;
@@ -184,7 +184,16 @@
             font-size: 0.9rem;
             margin: 0.75rem 0;
         }
-        
+
+        .note-info {
+            background: rgba(59,130,246,0.1);
+            border-left: 3px solid #3b82f6;
+            padding: 0.75rem 1rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+            font-size: 0.9rem;
+            margin: 0.75rem 0;
+        }
+
         footer {
             text-align: center;
             padding-top: 2rem;
@@ -206,61 +215,90 @@
             <div class="logo">
                 <svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
             </div>
-            <h1>YouTube Video Downloader</h1>
-            <p class="subtitle">Aplikacja konsolowa do pobierania wideo z YouTube</p>
-            <p class="author"><strong>Autor:</strong> Marcin Kępa · <a href="https://github.com/kepamarcin/YTdownloader" target="_blank">https://github.com/kepamarcin/YTdownloader</a></p>
+            <h1>YouTube Video Downloader v2</h1>
+            <p class="subtitle">Pobieranie wideo z YouTube w wysokiej rozdzielczosci (do 1080p)</p>
+            <p class="author"><strong>Autor:</strong> Marcin Kepa &middot; <a href="https://github.com/kepamarcin/YTdownloader" target="_blank">github.com/kepamarcin/YTdownloader</a></p>
         </header>
 
         <div class="card">
-            <h2><span class="emoji">🚀</span> Wymagania wstępne</h2>
-            <p>Zanim zaczniesz, upewnij się, że masz zainstalowane niezbędne narzędzia.</p>
-            
-            <h3>1. Instalacja Git</h3>
+            <h2><span class="emoji">&#x1F680;</span> Wymagania wstepne</h2>
+            <p>Zanim zaczniesz, upewnij sie, ze masz zainstalowane niezbedne narzedzia.</p>
+
+            <h3>1. Git</h3>
             <span class="badge badge-win">Windows</span>
-            <p>Pobierz instalator ze strony <a href="https://git-scm.com/download/win" target="_blank">git-scm.com</a>, uruchom i postępuj zgodnie z instrukcjami. Sprawdź instalację: <code>git --version</code></p>
-            
+            <p>Pobierz instalator ze strony <a href="https://git-scm.com/download/win" target="_blank">git-scm.com</a>, uruchom i postepuj zgodnie z instrukcjami. Sprawdz instalacje: <code>git --version</code></p>
+
             <span class="badge badge-unix">Linux (Debian/Ubuntu)</span>
             <pre><code>sudo apt update
 sudo apt install git</code></pre>
-            
+
             <span class="badge badge-unix">macOS</span>
             <pre><code>brew install git</code></pre>
 
-            <h3>2. Instalacja Python</h3>
+            <h3>2. Python (3.8+)</h3>
             <span class="badge badge-win">Windows</span>
-            <p>Pobierz ze strony <a href="https://www.python.org/" target="_blank">python.org</a>. <strong>Ważne:</strong> Zaznacz opcję "Add Python to PATH".</p>
-            
+            <p>Pobierz ze strony <a href="https://www.python.org/" target="_blank">python.org</a>. <strong>Wazne:</strong> Zaznacz opcje "Add Python to PATH".</p>
+
             <span class="badge badge-unix">Linux/macOS</span>
-            <p>Python jest zazwyczaj zainstalowany. Sprawdź: <code>python3 --version</code><br>Wymagana wersja: <strong>Python 3.8+</strong></p>
+            <p>Python jest zazwyczaj zainstalowany. Sprawdz: <code>python3 --version</code></p>
+
+            <h3>3. Node.js (20+)</h3>
+            <p>Wymagany do rozwiazywania zabezpieczen YouTube (n-challenge i PO Token). <strong>Bez Node.js dostepna bedzie tylko jakosc 360p.</strong></p>
+            <span class="badge badge-win">Windows</span>
+            <p>Pobierz ze strony <a href="https://nodejs.org/" target="_blank">nodejs.org</a> (wersja LTS). Sprawdz: <code>node --version</code></p>
+
+            <span class="badge badge-unix">Linux (Debian/Ubuntu)</span>
+            <pre><code>curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt install -y nodejs</code></pre>
+
+            <span class="badge badge-unix">macOS</span>
+            <pre><code>brew install node</code></pre>
         </div>
 
         <div class="card">
-            <h2><span class="emoji">📥</span> Pobieranie repozytorium</h2>
-            <p>Otwórz terminal w folderze, w którym chcesz zapisać projekt:</p>
+            <h2><span class="emoji">&#x1F4E5;</span> Pobieranie repozytorium</h2>
+            <p>Otwórz terminal w folderze, w którym chcesz zapisac projekt:</p>
             <pre><code>git clone https://github.com/kepamarcin/YTdownloader.git
 cd YTdownloader</code></pre>
         </div>
 
         <div class="card">
-            <h2><span class="emoji">⚙️</span> Instalacja i konfiguracja</h2>
-            
-            <h3>1. Utwórz środowisko wirtualne</h3>
+            <h2><span class="emoji">&#x2699;&#xFE0F;</span> Instalacja i konfiguracja</h2>
+
+            <h3>1. Utwórz srodowisko wirtualne</h3>
             <span class="badge badge-win">Windows</span>
             <pre><code>python -m venv venv
 venv\Scripts\activate</code></pre>
-            <div class="note">Jeśli wystąpi błąd uprawnień: <code>Set-ExecutionPolicy Bypass -Scope Process</code></div>
-            
+            <div class="note">Jesli wystapi blad uprawnien: <code>Set-ExecutionPolicy Bypass -Scope Process</code></div>
+
             <span class="badge badge-unix">Linux/macOS</span>
             <pre><code>python3 -m venv venv
 source venv/bin/activate</code></pre>
 
-            <h3>2. Zainstaluj zależności</h3>
-            <p>Upewnij się, że widzisz <code>(venv)</code> w terminalu:</p>
+            <h3>2. Zainstaluj zaleznosci</h3>
+            <p>Upewnij sie, ze widzisz <code>(venv)</code> w terminalu:</p>
             <pre><code>pip install -r requirements.txt</code></pre>
+
+            <h3>3. Skonfiguruj PO Token (wymagane do HD)</h3>
+            <div class="note-info">YouTube wymaga tokenów PO (Proof of Origin) do udostepniania wideo w wysokiej rozdzielczosci. Bez tego kroku dostepna bedzie tylko jakosc 360p.</div>
+
+            <span class="badge badge-win">Windows (PowerShell)</span>
+            <pre><code>git clone --single-branch --branch 1.3.1 https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git %USERPROFILE%\bgutil-ytdlp-pot-provider
+cd %USERPROFILE%\bgutil-ytdlp-pot-provider\server
+npm ci
+npx tsc</code></pre>
+
+            <span class="badge badge-unix">Linux/macOS</span>
+            <pre><code>git clone --single-branch --branch 1.3.1 https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git ~/bgutil-ytdlp-pot-provider
+cd ~/bgutil-ytdlp-pot-provider/server
+npm ci
+npx tsc</code></pre>
+            <div class="note">Repozytorium bgutil musi znajdowac sie w katalogu domowym uzytkownika (<code>~/bgutil-ytdlp-pot-provider</code>). Plugin automatycznie szuka go w tej lokalizacji.</div>
         </div>
 
         <div class="card">
-            <h2><span class="emoji">▶️</span> Uruchomienie</h2>
+            <h2><span class="emoji">&#x25B6;&#xFE0F;</span> Uruchomienie</h2>
+            <p>Upewnij sie, ze jestes w katalogu projektu i masz aktywne srodowisko wirtualne.</p>
             <div class="grid grid-2">
                 <div>
                     <span class="badge badge-win">Windows</span>
@@ -270,81 +308,84 @@ source venv/bin/activate</code></pre>
                     <span class="badge badge-unix">Linux/macOS</span>
                     <pre><code>python3 main.py</code></pre>
                 </div>
-                <div>
-                    <span class="badge badge-unix">Poskończeniu pobieraia deaktywacja venv</span>
-                    <pre><code>deactivate</code></pre>
-                </div>
             </div>
+            <h3>Po zakonczeniu pracy</h3>
+            <pre><code>deactivate</code></pre>
         </div>
 
         <div class="card">
-            <h2><span class="emoji">📖</span> Użycie</h2>
+            <h2><span class="emoji">&#x1F4D6;</span> Uzycie</h2>
             <ol>
-                <li><span class="num">1</span>Uruchom aplikację</li>
+                <li><span class="num">1</span>Uruchom aplikacje</li>
                 <li><span class="num">2</span>Wklej URL YouTube, gdy zostaniesz poproszony</li>
-                <li><span class="num">3</span>Poczekaj na pobranie (postęp w konsoli)</li>
-                <li><span class="num">4</span>Plik MP4 zapisze się w <code>downloads/</code></li>
-                <li><span class="num">5</span>Wpisz <code>q</code> aby wyjść</li>
+                <li><span class="num">3</span>Poczekaj na pobranie (postep w konsoli)</li>
+                <li><span class="num">4</span>Plik MP4 zapisze sie w <code>downloads/</code></li>
+                <li><span class="num">5</span>Wpisz <code>q</code> aby wyjsc</li>
             </ol>
-            
-            <h3>Obsługiwane formaty URL</h3>
+
+            <h3>Obslugiwane formaty URL</h3>
             <ul>
-                <li><span class="bullet"></span><code>https://www.youtube.com/watch?v=XXXX</code> — standardowe wideo</li>
-                <li><span class="bullet"></span><code>https://youtu.be/XXXX</code> — skrócony link</li>
-                <li><span class="bullet"></span><code>https://youtube.com/shorts/XXXX</code> — YouTube Shorts</li>
-                <li><span class="bullet"></span><code>https://youtube.com/live/XXXX</code> — transmisje na żywo</li>
-                <li><span class="bullet"></span><code>https://youtube.com/playlist?list=XXXX</code> — playlisty</li>
+                <li><span class="bullet"></span><code>https://www.youtube.com/watch?v=XXXX</code> &mdash; standardowe wideo</li>
+                <li><span class="bullet"></span><code>https://youtu.be/XXXX</code> &mdash; skrócony link</li>
+                <li><span class="bullet"></span><code>https://youtube.com/shorts/XXXX</code> &mdash; YouTube Shorts</li>
+                <li><span class="bullet"></span><code>https://youtube.com/live/XXXX</code> &mdash; transmisje na zywo</li>
+                <li><span class="bullet"></span><code>https://youtube.com/playlist?list=XXXX</code> &mdash; playlisty</li>
             </ul>
         </div>
 
         <div class="card">
-            <h2><span class="emoji">📂</span> Struktura katalogów</h2>
+            <h2><span class="emoji">&#x1F4C2;</span> Struktura katalogów</h2>
             <pre><code>YTdownloader/
-├── ffmpeg/           <span class="comment">← Tu umieść ffmpeg(.exe)</span>
-├── downloads/        <span class="comment">← Pobrane filmy (MP4)</span>
-├── venv/             <span class="comment">← Środowisko wirtualne</span>
-├── main.py           <span class="comment">← Główny plik aplikacji</span>
-├── requirements.txt  <span class="comment">← Lista zależności</span>
-└── README.md         <span class="comment">← Dokumentacja</span></code></pre>
+&#x251C;&#x2500;&#x2500; ffmpeg/           <span class="comment">&larr; Plik ffmpeg(.exe) &mdash; dolaczony</span>
+&#x251C;&#x2500;&#x2500; downloads/        <span class="comment">&larr; Pobrane filmy (MP4)</span>
+&#x251C;&#x2500;&#x2500; venv/             <span class="comment">&larr; Srodowisko wirtualne</span>
+&#x251C;&#x2500;&#x2500; main.py           <span class="comment">&larr; Glówny plik aplikacji</span>
+&#x251C;&#x2500;&#x2500; requirements.txt  <span class="comment">&larr; Lista zaleznosci</span>
+&#x2514;&#x2500;&#x2500; README.md         <span class="comment">&larr; Dokumentacja</span></code></pre>
         </div>
 
         <div class="card">
-            <h2><span class="emoji">🔧</span> Konfiguracja wewnętrzna</h2>
+            <h2><span class="emoji">&#x1F527;</span> Konfiguracja wewnetrzna</h2>
             <div class="grid grid-2">
-                <div class="info-box"><span class="label">Format</span><p class="value">Najlepsza jakość do 1080p (MP4)</p></div>
-                <div class="info-box"><span class="label">Player client</span><p class="value">Android + Web</p></div>
-                <div class="info-box"><span class="label">Geo bypass</span><p class="value">Włączony</p></div>
+                <div class="info-box"><span class="label">Format</span><p class="value">Najlepsza jakosc do 1080p (MP4)</p></div>
+                <div class="info-box"><span class="label">Player client</span><p class="value">Web + mWeb (z PO tokenami)</p></div>
+                <div class="info-box"><span class="label">JS Runtime</span><p class="value">Node.js (n-challenge)</p></div>
+                <div class="info-box"><span class="label">PO Token</span><p class="value">bgutil (tryb script)</p></div>
+                <div class="info-box"><span class="label">Geo bypass</span><p class="value">Wlaczony</p></div>
                 <div class="info-box"><span class="label">Retry</span><p class="value">10 prób</p></div>
                 <div class="info-box"><span class="label">Timeout</span><p class="value">30 sekund</p></div>
             </div>
         </div>
 
         <div class="card">
-            <h2><span class="emoji">❓</span> Rozwiązywanie problemów</h2>
+            <h2><span class="emoji">&#x2753;</span> Rozwiazywanie problemów</h2>
             <table>
-                <tr><th>Problem</th><th>Rozwiązanie</th></tr>
-                <tr><td>"Nie znaleziono ffmpeg"</td><td>Umieść <code>ffmpeg</code> w folderze <code>ffmpeg/</code></td></tr>
-                <tr><td>"Sign in to confirm your age"</td><td>Wideo wymaga cookies (nieobsługiwane)</td></tr>
-                <tr><td>"Video unavailable"</td><td>Wideo zablokowane w regionie lub usunięte</td></tr>
-                <tr><td>Wolne pobieranie</td><td>YouTube throttling — normalne zachowanie</td></tr>
-                <tr><td>Błędy pobierania</td><td><code>pip install --upgrade yt-dlp</code></td></tr>
+                <tr><th>Problem</th><th>Rozwiazanie</th></tr>
+                <tr><td>"Nie znaleziono ffmpeg"</td><td>Umiec <code>ffmpeg(.exe)</code> w folderze <code>ffmpeg/</code></td></tr>
+                <tr><td>"ffmpeg is not installed" przy HD</td><td>Sprawdz czy w <code>ffmpeg/</code> jest <code>ffmpeg.exe</code> (Win) lub <code>ffmpeg</code> (Linux)</td></tr>
+                <tr><td>Tylko 360p, brak HD</td><td>Sprawdz: 1) <code>node --version</code> &ge; 20, 2) bgutil sklonowany i zbudowany w <code>~/bgutil-ytdlp-pot-provider/server/</code></td></tr>
+                <tr><td>WARNING: pot:bgutil:http</td><td>Normalne ostrzezenie &mdash; plugin przechodzi na tryb script. Ignoruj.</td></tr>
+                <tr><td>"n challenge solving failed"</td><td>Zainstaluj Node.js &ge; 20. Zaktualizuj: <code>pip install -U "yt-dlp[default]"</code></td></tr>
+                <tr><td>"Sign in to confirm your age"</td><td>Wideo wymaga cookies (nieobslugiwane)</td></tr>
+                <tr><td>"Video unavailable"</td><td>Wideo zablokowane w regionie lub usuniete</td></tr>
+                <tr><td>Wolne pobieranie</td><td>YouTube throttling &mdash; normalne zachowanie</td></tr>
+                <tr><td>Bledy pobierania</td><td><code>pip install -U "yt-dlp[default]" bgutil-ytdlp-pot-provider</code></td></tr>
             </table>
         </div>
 
         <footer>
-            YouTube Video Downloader · Marcin Kępa · <a href="https://github.com/kepamarcin/YTdownloader" target="_blank" style="color: #ef4444;">GitHub</a>
+            YouTube Video Downloader &middot; Marcin Kepa &middot; <a href="https://github.com/kepamarcin/YTdownloader" target="_blank" style="color: #ef4444;">GitHub</a>
         </footer>
     </div>
 
     <script>
         const toggle = document.getElementById('themeToggle');
         const html = document.documentElement;
-        
-        // Domyślnie ciemny, chyba że użytkownik wybrał jasny
+
         if (localStorage.getItem('theme') === 'light') {
             html.classList.remove('dark');
         }
-        
+
         toggle.onclick = () => {
             html.classList.toggle('dark');
             localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');

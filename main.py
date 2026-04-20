@@ -48,10 +48,12 @@ def download_video(url):
         # Ustawienia specyficzne dla YouTube
         'extractor_args': {
             'youtube': {
-                'player_client': ['android', 'web'],  # Klienty do pobierania
-                'skip': ['dash', 'hls'],  # Pomijaj problematyczne formaty
+                'player_client': ['web', 'mweb'],  # Klienty z obsługą PO tokenów
             }
         },
+
+        # JavaScript runtime do rozwiązywania n-challenge YouTube
+        'js_runtimes': {'node': {}},
         
         # Opcje YouTube
         'writesubtitles': False,
@@ -80,7 +82,7 @@ def download_video(url):
     }
     
     if ffmpeg_path:
-        ydl_opts['ffmpeg_location'] = os.path.dirname(ffmpeg_path)
+        ydl_opts['ffmpeg_location'] = ffmpeg_path
     
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -124,11 +126,25 @@ def validate_youtube_url(url):
     ]
     return any(pattern in url for pattern in youtube_patterns)
 
+def check_pot_provider():
+    """Sprawdza czy plugin PO Token jest zainstalowany."""
+    try:
+        import yt_dlp_plugins.extractor.getpot_bgutil
+        return True
+    except ImportError:
+        return False
+
 def main():
     print("=" * 50)
     print("       YOUTUBE VIDEO DOWNLOADER")
     print("         (yt-dlp + ffmpeg)")
     print("=" * 50)
+
+    if not check_pot_provider():
+        print("\nUWAGA: Nie wykryto pluginu PO Token (bgutil-ytdlp-pot-provider).")
+        print("Wysokie rozdzielczości mogą nie działać bez PO tokenów.")
+        print("Instalacja: pip install bgutil-ytdlp-pot-provider")
+        print("Szczegóły: https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide")
     
     while True:
         print("\nWpisz 'q' aby wyjść")
