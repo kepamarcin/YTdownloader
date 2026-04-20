@@ -26,12 +26,20 @@ def get_downloads_path():
     """Zwraca ścieżkę do katalogu downloads."""
     base_dir = os.path.dirname(os.path.abspath(__file__))
     downloads_dir = os.path.join(base_dir, 'downloads')
-    
+
     if not os.path.exists(downloads_dir):
         os.makedirs(downloads_dir)
         print(f"Utworzono katalog: {downloads_dir}")
-    
+
     return downloads_dir
+
+def get_bgutil_script_path():
+    """Zwraca ścieżkę do generate_once.js w katalogu projektu lub None."""
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    script_path = os.path.join(
+        base_dir, 'bgutil-ytdlp-pot-provider', 'server', 'build', 'generate_once.js'
+    )
+    return script_path if os.path.exists(script_path) else None
 
 def download_video(url):
     """Pobiera wideo z YouTube."""
@@ -83,6 +91,12 @@ def download_video(url):
     
     if ffmpeg_path:
         ydl_opts['ffmpeg_location'] = ffmpeg_path
+
+    bgutil_script = get_bgutil_script_path()
+    if bgutil_script:
+        ydl_opts['extractor_args']['youtubepot-bgutilscript'] = {
+            'script_path': [bgutil_script]
+        }
     
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -145,6 +159,10 @@ def main():
         print("Wysokie rozdzielczości mogą nie działać bez PO tokenów.")
         print("Instalacja: pip install bgutil-ytdlp-pot-provider")
         print("Szczegóły: https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide")
+    elif not get_bgutil_script_path():
+        print("\nUWAGA: Nie znaleziono skryptu bgutil (generate_once.js) w katalogu projektu.")
+        print("Sklonuj i zbuduj repo w: ./bgutil-ytdlp-pot-provider/")
+        print("Bez tego YouTube moze ograniczyc jakosc do 360p.")
     
     while True:
         print("\nWpisz 'q' aby wyjść")

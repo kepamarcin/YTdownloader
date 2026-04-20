@@ -103,22 +103,17 @@ pip install -r requirements.txt
 
 YouTube wymaga tokenów PO (Proof of Origin) do udostepniania wideo w wysokiej rozdzielczosci. Bez tego kroku dostepna bedzie tylko jakosc 360p.
 
+Bedac w katalogu `YTdownloader/`, wykonaj (dziala tak samo na Windows/macOS/Linux):
+
 ```bash
-git clone --single-branch --branch 1.3.1 https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git ~/bgutil-ytdlp-pot-provider
-cd ~/bgutil-ytdlp-pot-provider/server
+git clone --single-branch --branch 1.3.1 https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git bgutil-ytdlp-pot-provider
+cd bgutil-ytdlp-pot-provider/server
 npm ci
 npx tsc
+cd ../..
 ```
 
-Na Windows sciezka domowa to `C:\Users\TwojaNazwaUzytkownika\`. Mozesz równiez uzyc:
-```powershell
-git clone --single-branch --branch 1.3.1 https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git %USERPROFILE%\bgutil-ytdlp-pot-provider
-cd %USERPROFILE%\bgutil-ytdlp-pot-provider\server
-npm ci
-npx tsc
-```
-
-> **Uwaga:** Repozytorium bgutil musi znajdowac sie w katalogu domowym uzytkownika (`~/bgutil-ytdlp-pot-provider`). Plugin automatycznie szuka go w tej lokalizacji.
+> **Uwaga:** Repozytorium bgutil jest klonowane do podkatalogu projektu (`./bgutil-ytdlp-pot-provider`). Aplikacja automatycznie wykrywa skrypt `server/build/generate_once.js` w tej lokalizacji i przekazuje jego sciezke do yt-dlp, wiec dziala przenosnie na Windows, macOS i Linux.
 
 ---
 
@@ -164,13 +159,14 @@ deactivate
 
 ```text
 YTdownloader/
-├── ffmpeg/           <- Plik ffmpeg/ffmpeg.exe (dolaczony)
+├── ffmpeg/                      <- Plik ffmpeg/ffmpeg.exe (dolaczony)
 │   └── ffmpeg(.exe)
-├── downloads/        <- Pobrane filmy (MP4)
-├── venv/             <- Srodowisko wirtualne
-├── main.py           <- Glówny plik aplikacji
-├── requirements.txt  <- Lista zaleznosci
-└── README.md         <- Dokumentacja
+├── bgutil-ytdlp-pot-provider/   <- Sklonowane repo bgutil (krok 3)
+├── downloads/                   <- Pobrane filmy (MP4)
+├── venv/                        <- Srodowisko wirtualne
+├── main.py                      <- Glówny plik aplikacji
+├── requirements.txt             <- Lista zaleznosci
+└── README.md                    <- Dokumentacja
 ```
 
 ---
@@ -194,7 +190,7 @@ Aplikacja jest domyslnie skonfigurowana dla optymalnej wydajnosci:
 | :--- | :--- |
 | "Nie znaleziono ffmpeg" | Upewnij sie, ze plik `ffmpeg` (lub `ffmpeg.exe`) znajduje sie w folderze `ffmpeg/`. |
 | "ffmpeg is not installed" przy HD | Sprawdz czy w folderze `ffmpeg/` jest plik `ffmpeg.exe` (Windows) lub `ffmpeg` (Linux/macOS). |
-| Tylko 360p, brak HD | Sprawdz czy bgutil jest sklonowany i zbudowany w `~/bgutil-ytdlp-pot-provider/server/`. Sprawdz czy Node.js >= 20 jest zainstalowany: `node --version`. |
+| Tylko 360p, brak HD | Sprawdz czy bgutil jest sklonowany i zbudowany w `./bgutil-ytdlp-pot-provider/server/` (w katalogu projektu). Sprawdz czy Node.js >= 20 jest zainstalowany: `node --version`. |
 | WARNING: pot:bgutil:http | To normalne ostrzezenie — plugin automatycznie przechodzi na tryb script. Mozna zignorowac. |
 | "n challenge solving failed" | Zainstaluj Node.js >= 20 i upewnij sie, ze jest w PATH. Zaktualizuj yt-dlp: `pip install -U "yt-dlp[default]"`. |
 | "Sign in to confirm your age" | Wideo ma ograniczenie wiekowe i wymaga plików cookies (obecnie nieobslugiwane w tej wersji). |

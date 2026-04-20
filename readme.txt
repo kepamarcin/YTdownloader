@@ -92,22 +92,17 @@ w terminalu), a nastepnie zainstaluj biblioteki:
 YouTube wymaga tokenów PO (Proof of Origin) do udostepniania wideo w wysokiej
 rozdzielczosci. Bez tego kroku dostepna bedzie tylko jakosc 360p.
 
-Windows (PowerShell):
-    git clone --single-branch --branch 1.3.1 https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git %USERPROFILE%\bgutil-ytdlp-pot-provider
-    cd %USERPROFILE%\bgutil-ytdlp-pot-provider\server
+Bedac w katalogu YTdownloader/ (dziala tak samo na Windows/macOS/Linux):
+    git clone --single-branch --branch 1.3.1 https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git bgutil-ytdlp-pot-provider
+    cd bgutil-ytdlp-pot-provider/server
     npm ci
     npx tsc
-    cd <sciezka_do_YTdownloader>
+    cd ../..
 
-Linux/macOS:
-    git clone --single-branch --branch 1.3.1 https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git ~/bgutil-ytdlp-pot-provider
-    cd ~/bgutil-ytdlp-pot-provider/server
-    npm ci
-    npx tsc
-    cd <sciezka_do_YTdownloader>
-
-UWAGA: Repozytorium bgutil musi znajdowac sie w katalogu domowym uzytkownika
-(~/bgutil-ytdlp-pot-provider). Plugin automatycznie szuka go w tej lokalizacji.
+UWAGA: Repozytorium bgutil jest klonowane do podkatalogu projektu
+(./bgutil-ytdlp-pot-provider). Aplikacja automatycznie wykrywa skrypt
+server/build/generate_once.js w tej lokalizacji i przekazuje jego sciezke
+do yt-dlp, wiec dziala przenosnie na Windows, macOS i Linux.
 
 ================================================================================
 
@@ -146,13 +141,14 @@ Obslugiwane formaty URL:
 Struktura katalogów
 
 YTdownloader/
-├── ffmpeg/           <- Plik ffmpeg/ffmpeg.exe (dolaczony)
+├── ffmpeg/                      <- Plik ffmpeg/ffmpeg.exe (dolaczony)
 │   └── ffmpeg(.exe)
-├── downloads/        <- Pobrane filmy (MP4)
-├── venv/             <- Srodowisko wirtualne
-├── main.py           <- Glówny plik aplikacji
-├── requirements.txt  <- Lista zaleznosci
-└── readme.txt        <- Dokumentacja
+├── bgutil-ytdlp-pot-provider/   <- Sklonowane repo bgutil (krok 3)
+├── downloads/                   <- Pobrane filmy (MP4)
+├── venv/                        <- Srodowisko wirtualne
+├── main.py                      <- Glówny plik aplikacji
+├── requirements.txt             <- Lista zaleznosci
+└── readme.txt                   <- Dokumentacja
 
 ================================================================================
 
@@ -176,7 +172,7 @@ Problem                          | Rozwiazanie
 "Nie znaleziono ffmpeg"          | Upewnij sie, ze plik ffmpeg(.exe) jest w folderze ffmpeg/
 "ffmpeg is not installed" (HD)   | Sprawdz czy ffmpeg.exe (Win) lub ffmpeg (Linux) jest w folderze ffmpeg/
 Tylko 360p, brak HD              | Sprawdz: 1) Node.js >= 20 (node --version), 2) bgutil sklonowany
-                                 | i zbudowany w ~/bgutil-ytdlp-pot-provider/server/
+                                 | i zbudowany w ./bgutil-ytdlp-pot-provider/server/ (w katalogu projektu)
 WARNING: pot:bgutil:http         | Normalne ostrzezenie — plugin przechodzi na tryb script. Ignoruj.
 "n challenge solving failed"     | Zainstaluj Node.js >= 20. Zaktualizuj: pip install -U "yt-dlp[default]"
 "Sign in to confirm your age"    | Wideo wymaga cookies (nieobslugiwane w tej wersji)

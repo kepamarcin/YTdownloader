@@ -282,18 +282,13 @@ source venv/bin/activate</code></pre>
             <h3>3. Skonfiguruj PO Token (wymagane do HD)</h3>
             <div class="note-info">YouTube wymaga tokenów PO (Proof of Origin) do udostepniania wideo w wysokiej rozdzielczosci. Bez tego kroku dostepna bedzie tylko jakosc 360p.</div>
 
-            <span class="badge badge-win">Windows (PowerShell)</span>
-            <pre><code>git clone --single-branch --branch 1.3.1 https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git %USERPROFILE%\bgutil-ytdlp-pot-provider
-cd %USERPROFILE%\bgutil-ytdlp-pot-provider\server
+            <p>Bedac w katalogu <code>YTdownloader/</code> (dziala tak samo na Windows, macOS i Linux):</p>
+            <pre><code>git clone --single-branch --branch 1.3.1 https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git bgutil-ytdlp-pot-provider
+cd bgutil-ytdlp-pot-provider/server
 npm ci
-npx tsc</code></pre>
-
-            <span class="badge badge-unix">Linux/macOS</span>
-            <pre><code>git clone --single-branch --branch 1.3.1 https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git ~/bgutil-ytdlp-pot-provider
-cd ~/bgutil-ytdlp-pot-provider/server
-npm ci
-npx tsc</code></pre>
-            <div class="note">Repozytorium bgutil musi znajdowac sie w katalogu domowym uzytkownika (<code>~/bgutil-ytdlp-pot-provider</code>). Plugin automatycznie szuka go w tej lokalizacji.</div>
+npx tsc
+cd ../..</code></pre>
+            <div class="note">Repozytorium bgutil jest klonowane do podkatalogu projektu (<code>./bgutil-ytdlp-pot-provider</code>). Aplikacja automatycznie wykrywa skrypt <code>server/build/generate_once.js</code> w tej lokalizacji i przekazuje jego sciezke do yt-dlp, wiec dziala przenosnie na Windows, macOS i Linux.</div>
         </div>
 
         <div class="card">
@@ -336,12 +331,13 @@ npx tsc</code></pre>
         <div class="card">
             <h2><span class="emoji">&#x1F4C2;</span> Struktura katalogów</h2>
             <pre><code>YTdownloader/
-&#x251C;&#x2500;&#x2500; ffmpeg/           <span class="comment">&larr; Plik ffmpeg(.exe) &mdash; dolaczony</span>
-&#x251C;&#x2500;&#x2500; downloads/        <span class="comment">&larr; Pobrane filmy (MP4)</span>
-&#x251C;&#x2500;&#x2500; venv/             <span class="comment">&larr; Srodowisko wirtualne</span>
-&#x251C;&#x2500;&#x2500; main.py           <span class="comment">&larr; Glówny plik aplikacji</span>
-&#x251C;&#x2500;&#x2500; requirements.txt  <span class="comment">&larr; Lista zaleznosci</span>
-&#x2514;&#x2500;&#x2500; README.md         <span class="comment">&larr; Dokumentacja</span></code></pre>
+&#x251C;&#x2500;&#x2500; ffmpeg/                      <span class="comment">&larr; Plik ffmpeg(.exe) &mdash; dolaczony</span>
+&#x251C;&#x2500;&#x2500; bgutil-ytdlp-pot-provider/   <span class="comment">&larr; Sklonowane repo bgutil (krok 3)</span>
+&#x251C;&#x2500;&#x2500; downloads/                   <span class="comment">&larr; Pobrane filmy (MP4)</span>
+&#x251C;&#x2500;&#x2500; venv/                        <span class="comment">&larr; Srodowisko wirtualne</span>
+&#x251C;&#x2500;&#x2500; main.py                      <span class="comment">&larr; Glówny plik aplikacji</span>
+&#x251C;&#x2500;&#x2500; requirements.txt             <span class="comment">&larr; Lista zaleznosci</span>
+&#x2514;&#x2500;&#x2500; README.md                    <span class="comment">&larr; Dokumentacja</span></code></pre>
         </div>
 
         <div class="card">
@@ -363,7 +359,7 @@ npx tsc</code></pre>
                 <tr><th>Problem</th><th>Rozwiazanie</th></tr>
                 <tr><td>"Nie znaleziono ffmpeg"</td><td>Umiec <code>ffmpeg(.exe)</code> w folderze <code>ffmpeg/</code></td></tr>
                 <tr><td>"ffmpeg is not installed" przy HD</td><td>Sprawdz czy w <code>ffmpeg/</code> jest <code>ffmpeg.exe</code> (Win) lub <code>ffmpeg</code> (Linux)</td></tr>
-                <tr><td>Tylko 360p, brak HD</td><td>Sprawdz: 1) <code>node --version</code> &ge; 20, 2) bgutil sklonowany i zbudowany w <code>~/bgutil-ytdlp-pot-provider/server/</code></td></tr>
+                <tr><td>Tylko 360p, brak HD</td><td>Sprawdz: 1) <code>node --version</code> &ge; 20, 2) bgutil sklonowany i zbudowany w <code>./bgutil-ytdlp-pot-provider/server/</code> (w katalogu projektu)</td></tr>
                 <tr><td>WARNING: pot:bgutil:http</td><td>Normalne ostrzezenie &mdash; plugin przechodzi na tryb script. Ignoruj.</td></tr>
                 <tr><td>"n challenge solving failed"</td><td>Zainstaluj Node.js &ge; 20. Zaktualizuj: <code>pip install -U "yt-dlp[default]"</code></td></tr>
                 <tr><td>"Sign in to confirm your age"</td><td>Wideo wymaga cookies (nieobslugiwane)</td></tr>
