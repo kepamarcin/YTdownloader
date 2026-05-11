@@ -1,26 +1,49 @@
 #!/usr/bin/env python3
 import os
 import sys
+import shutil
 import platform
 import yt_dlp
 
+def print_ffmpeg_install_hint():
+    """Wyświetla instrukcję instalacji ffmpeg dla aktualnego systemu."""
+    system = platform.system().lower()
+    print("\nffmpeg nie jest zainstalowany w systemie ani dostępny w katalogu 'ffmpeg/'.")
+    print("Proponowana instalacja dla Twojego systemu:")
+    if system == 'windows':
+        print("  - winget install --id=Gyan.FFmpeg -e")
+        print("  - lub Chocolatey: choco install ffmpeg")
+        print("  - lub pobierz ręcznie: https://www.gyan.dev/ffmpeg/builds/")
+        print("    i umieść plik 'ffmpeg.exe' w katalogu 'ffmpeg/' obok main.py")
+    elif system == 'darwin':
+        print("  - brew install ffmpeg")
+        print("  - lub MacPorts: sudo port install ffmpeg")
+    elif system == 'linux':
+        print("  - Debian/Ubuntu: sudo apt update && sudo apt install ffmpeg")
+        print("  - Fedora:        sudo dnf install ffmpeg")
+        print("  - Arch:          sudo pacman -S ffmpeg")
+    else:
+        print(f"  - Nieznany system ({system}). Zobacz: https://ffmpeg.org/download.html")
+
 def get_ffmpeg_path():
-    """Zwraca ścieżkę do ffmpeg w zależności od systemu operacyjnego."""
+    """Zwraca ścieżkę do ffmpeg: najpierw z PATH, potem z katalogu projektu."""
+    system_ffmpeg = shutil.which('ffmpeg')
+    if system_ffmpeg:
+        return system_ffmpeg
+
     base_dir = os.path.dirname(os.path.abspath(__file__))
     ffmpeg_dir = os.path.join(base_dir, 'ffmpeg')
-    
-    system = platform.system().lower()
-    if system == 'windows':
-        ffmpeg_path = os.path.join(ffmpeg_dir, 'ffmpeg.exe')
+
+    if platform.system().lower() == 'windows':
+        local_ffmpeg = os.path.join(ffmpeg_dir, 'ffmpeg.exe')
     else:
-        ffmpeg_path = os.path.join(ffmpeg_dir, 'ffmpeg')
-    
-    if not os.path.exists(ffmpeg_path):
-        print(f"UWAGA: Nie znaleziono ffmpeg w: {ffmpeg_path}")
-        print("Upewnij się, że plik ffmpeg znajduje się w katalogu 'ffmpeg/'")
-        return None
-    
-    return ffmpeg_path
+        local_ffmpeg = os.path.join(ffmpeg_dir, 'ffmpeg')
+
+    if os.path.exists(local_ffmpeg):
+        return local_ffmpeg
+
+    print_ffmpeg_install_hint()
+    return None
 
 def get_downloads_path():
     """Zwraca ścieżkę do katalogu downloads."""
